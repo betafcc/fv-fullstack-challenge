@@ -16,7 +16,7 @@ const paginated =
   async (options: {
     cursor: number
     limit: number
-  }): Promise<{ items: A; nextPage: number | null }> => {
+  }): Promise<{ items: Array<A>; nextPage: number | null }> => {
     const response = await fetch(
       queryString.stringifyUrl({
         url,
