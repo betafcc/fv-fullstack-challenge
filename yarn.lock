@@ -949,6 +949,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-infinite-scroller@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@types/react-infinite-scroller@npm:1.2.5"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 6dcba15dbaf2732f61c325147395f58a0241082f93ae5280b905d580303af9a0aa38c3bb28b2b6345da9a3758b1e69489bdcfff7411f55fe2868edd0e2a0f0e6
+  languageName: node
+  linkType: hard
+
 "@types/react-transition-group@npm:^4.4.10":
   version: 4.4.10
   resolution: "@types/react-transition-group@npm:4.4.10"
@@ -2371,12 +2380,14 @@ __metadata:
     "@types/node": "npm:17.0.23"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
+    "@types/react-infinite-scroller": "npm:^1.2.5"
     eslint: "npm:8.13.0"
     eslint-config-next: "npm:12.1.4"
     next: "npm:12.3.4"
     query-string: "npm:^9.0.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    react-infinite-scroller: "npm:^1.2.6"
     superjson: "npm:^2.2.1"
     tsx: "npm:^4.16.2"
     typescript: "npm:4.6.3"
@@ -3690,7 +3701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -3735,6 +3746,17 @@ __metadata:
   peerDependencies:
     react: ^18.3.1
   checksum: a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
+  languageName: node
+  linkType: hard
+
+"react-infinite-scroller@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "react-infinite-scroller@npm:1.2.6"
+  dependencies:
+    prop-types: "npm:^15.5.8"
+  peerDependencies:
+    react: ^0.14.9 || ^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: dc269b873603a1acff3fe78d6f9a073623205cd9317da71e62306302d18ba1f89a78d8b13654d52efb289d4bf769ea803aeff6ee0afd26f6576c1e4a935a238d
   languageName: node
   linkType: hard
 
