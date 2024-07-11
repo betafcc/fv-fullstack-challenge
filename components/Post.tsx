@@ -10,7 +10,7 @@ import {
 import * as schema from '../server/schema'
 import { trpc } from '../utils/trpc'
 
-const Post: React.FC<schema.Post> = ({ id, body, title, userId }) => {
+export const Post: React.FC<schema.Post> = ({ id, body, title, userId }) => {
   const [comments, setComments] = useState([] as Array<schema.Comment>)
   const [showComments, setShowComments] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -57,5 +57,3 @@ const Post: React.FC<schema.Post> = ({ id, body, title, userId }) => {
     </Box>
   )
 }
-
-export default Post

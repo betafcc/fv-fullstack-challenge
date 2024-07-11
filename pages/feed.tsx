@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import type { NextPage, InferGetServerSidePropsType } from 'next'
 import InfiniteScroll from 'react-infinite-scroller'
@@ -5,8 +6,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { trpc } from '../utils/trpc'
 import type * as schema from '../server/schema'
 import { helpers } from '../server/helpers'
-import Post from '../components/Post'
-import Head from 'next/head'
+import { Post } from '../components/Post'
 
 const Feed: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>

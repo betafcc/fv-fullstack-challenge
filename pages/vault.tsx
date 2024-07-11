@@ -1,14 +1,13 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import type { NextPage, InferGetServerSidePropsType } from 'next'
 import InfiniteScroll from 'react-infinite-scroller'
+import { Container } from '@mui/material'
 
 import { trpc } from '../utils/trpc'
 import type * as schema from '../server/schema'
 import { helpers } from '../server/helpers'
-import Post from '../components/Post'
-import { Container } from '@mui/material'
 import { PhotoGrid } from '../components/PhotoGrid'
-import Head from 'next/head'
 
 const Vault: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
