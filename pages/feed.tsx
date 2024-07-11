@@ -11,6 +11,9 @@ import { Post } from '../components/Post'
 const Feed: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ initialData, initialNextPage }) => {
+  // For proper SSR, this component should render just the initialData
+  // and delegate the infinite scroll to render the rest on demand,
+  // that would need a small refactor here
   const [items, setItems] = useState<schema.Post[]>(initialData)
   const [nextPage, setNextPage] = useState<number | null>(initialNextPage)
   const [loading, setLoading] = useState<boolean>(false)

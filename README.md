@@ -24,13 +24,13 @@ Fetch functions for the API.
 
 Note the support for pagination, which enables infinite scroll on `feed` and `vault` pages.
 
-I was asked to leave comments on how to make the back end better, but to be honest, given the simplicity of the model, I'm not very critical of the functionalities. Here are some comments about it anyway:
+I was asked to leave comments on the limitations of the api and backend, but to be honest, given the simplicity of the model, I'm not very critical of the functionalities. Here are some comments about it anyway:
 
 - I noticed that jsonplaceholder supports pagination via query params and that return relevant headers, so that is good.
 
-- I **would not** choose graphql for such a data model, as it is really the perfect use-case for REST-style API, and to transfer to GraphQL would require a lot of boilerplate on the resolvers, specifically the cumbersome data loaders to avoid [N+1 query problem](https://www.freecodecamp.org/news/n-plus-one-query-problem/).
+- Although I like graphql, I **would not** choose it for such a simple data model, as it is really the perfect use-case for REST-style API, and to transfer to GraphQL would require a lot of boilerplate on the resolvers, specifically the cumbersome data loaders to avoid [N+1 query problem](https://www.freecodecamp.org/news/n-plus-one-query-problem/).
 
-- It could be improved by returning only the fields used on frontend, but with such a small model I would say that's nitpicking.
+- It could be improved by returning only the fields used on frontend, or that we could save a request by having posts and comments be fetched in one go, but with such a small model I would say that's nitpicking.
 
 - Maybe it's worth mentioning that the API don't support user auth, which in a real Next project I would use NextAuth, and handle the tRPC context accordingly.
 
@@ -57,7 +57,7 @@ NOTE: I initially tried using the official TRPCNext client, which in turn uses `
 
 As mentioned before, the enpoints for posts and photos are paginated, so I load the first page on server side, and load subsequent pages on scroll.
 
-This can be desired from SEO perspective, as a part of the content is immediately available.
+This can be desired from SEO perspective, as a part of the content is immediately available, although the components I used were not SSR friendly and would need to be refactored.
 
 I provided just a hint of **Head tags** that could be included, in a real project, I would include the necessary ones for Social cards (`og:*` and `twitter:*` meta tags).
 
@@ -89,7 +89,7 @@ There is some housekeeping that should be done with the imports, specifically, t
 
 - I would use [bun](https://bun.sh/) for the project, as it is already on 1.0 and I see it used all the time even by the [Vercel team](https://www.youtube.com/@VercelHQ) on NextJS videos
 
-- In the absence of bun, I added `tsx` to quickly check some functions, like when I was creating the service file and wanted to sanity-check the API. In my experience this is as fundamental as unit testing.
+- In the absence of bun, I added `tsx` to quickly check some functions, eg when I was creating the service file and wanted to sanity-check the API response. In my experience this is as fundamental as unit testing.
 
 - I had prettier setup on my editor (~~VIM btw~~), so I didn't feel the need to setup a formatter, in a real project, I would, sharing the configuration and the recommended extension on `.vscode` folder
 
