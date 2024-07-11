@@ -47,6 +47,7 @@ const Vault: NextPage<
           hasMore={nextPage !== null}
           loader={<div key={0}>Loading...</div>}
         >
+          {/* add empty case */}
           <PhotoGrid photos={items} />
         </InfiniteScroll>
       </Container>

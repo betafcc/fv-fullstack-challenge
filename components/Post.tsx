@@ -45,6 +45,7 @@ export const Post: React.FC<schema.Post> = ({ id, body, title, userId }) => {
         )}
       </Button>
       <Collapse in={showComments} id={`comments-${id}`}>
+        {/* TODO: proper Comment component */}
         {comments.map(comment => (
           <Box
             key={comment.id}

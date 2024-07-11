@@ -43,8 +43,10 @@ const Feed: NextPage<
       <InfiniteScroll
         loadMore={loadMore}
         hasMore={nextPage !== null}
+        // TODO: add post skeleto
         loader={<div key={0}>Loading...</div>}
       >
+        {/* add empty case */}
         {items.map(item => (
           <Post key={item.id} {...item} />
         ))}
