@@ -1,6 +1,7 @@
-import type { AppProps } from "next/app";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import lightTheme from "../themes/lightTheme";
+import type { AppProps } from 'next/app'
+import { ThemeProvider, CssBaseline } from '@mui/material'
+import lightTheme from '../themes/lightTheme'
+import { trpc } from '../utils/trpc'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -8,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CssBaseline />
       <Component {...pageProps} />
     </ThemeProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default trpc.withTRPC(MyApp)
