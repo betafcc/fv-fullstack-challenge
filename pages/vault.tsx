@@ -6,11 +6,13 @@ import { trpc } from '../utils/trpc'
 import type * as schema from '../server/schema'
 import { helpers } from '../server/helpers'
 import Post from '../components/Post'
+import { Container } from '@mui/material'
+import { PhotoGrid } from '../components/PhotoGrid'
 
-const Feed: NextPage<
+const Vault: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ initialData, initialNextPage }) => {
-  const [items, setItems] = useState<schema.Post[]>(initialData)
+  const [items, setItems] = useState<schema.Photo[]>(initialData)
   const [nextPage, setNextPage] = useState<number | null>(initialNextPage)
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -18,7 +20,7 @@ const Feed: NextPage<
     if (nextPage && !loading) {
       setLoading(true)
       try {
-        const data = await trpc.infinitePosts.query({
+        const data = await trpc.infinitePhotos.query({
           limit: 10,
           cursor: nextPage,
         })
@@ -32,20 +34,20 @@ const Feed: NextPage<
   }
 
   return (
-    <InfiniteScroll
-      loadMore={loadMore}
-      hasMore={nextPage !== null}
-      loader={<div key={0}>Loading...</div>}
-    >
-      {items.map(item => (
-        <Post key={item.id} {...item} />
-      ))}
-    </InfiniteScroll>
+    <Container>
+      <InfiniteScroll
+        loadMore={loadMore}
+        hasMore={nextPage !== null}
+        loader={<div key={0}>Loading...</div>}
+      >
+        <PhotoGrid photos={items} />
+      </InfiniteScroll>
+    </Container>
   )
 }
 
 export const getServerSideProps = async () => {
-  const initialData = await helpers.infinitePosts.fetch({
+  const initialData = await helpers.infinitePhotos.fetch({
     limit: 10,
     cursor: 1,
   })
@@ -58,4 +60,4 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default Feed
+export default Vault
