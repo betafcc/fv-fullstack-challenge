@@ -6,6 +6,7 @@ import { trpc } from '../utils/trpc'
 import type * as schema from '../server/schema'
 import { helpers } from '../server/helpers'
 import Post from '../components/Post'
+import Head from 'next/head'
 
 const Feed: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
@@ -32,15 +33,23 @@ const Feed: NextPage<
   }
 
   return (
-    <InfiniteScroll
-      loadMore={loadMore}
-      hasMore={nextPage !== null}
-      loader={<div key={0}>Loading...</div>}
-    >
-      {items.map(item => (
-        <Post key={item.id} {...item} />
-      ))}
-    </InfiniteScroll>
+    <>
+      <Head>
+        <title>Feed</title>
+        <meta name="description" content="Feed page description" />
+        {/* social cards */}
+      </Head>
+
+      <InfiniteScroll
+        loadMore={loadMore}
+        hasMore={nextPage !== null}
+        loader={<div key={0}>Loading...</div>}
+      >
+        {items.map(item => (
+          <Post key={item.id} {...item} />
+        ))}
+      </InfiniteScroll>
+    </>
   )
 }
 

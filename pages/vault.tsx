@@ -8,6 +8,7 @@ import { helpers } from '../server/helpers'
 import Post from '../components/Post'
 import { Container } from '@mui/material'
 import { PhotoGrid } from '../components/PhotoGrid'
+import Head from 'next/head'
 
 const Vault: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
@@ -34,15 +35,23 @@ const Vault: NextPage<
   }
 
   return (
-    <Container>
-      <InfiniteScroll
-        loadMore={loadMore}
-        hasMore={nextPage !== null}
-        loader={<div key={0}>Loading...</div>}
-      >
-        <PhotoGrid photos={items} />
-      </InfiniteScroll>
-    </Container>
+    <>
+      <Head>
+        <title>Vault</title>
+        <meta name="description" content="Vault page description" />
+        {/* social cards */}
+      </Head>
+
+      <Container>
+        <InfiniteScroll
+          loadMore={loadMore}
+          hasMore={nextPage !== null}
+          loader={<div key={0}>Loading...</div>}
+        >
+          <PhotoGrid photos={items} />
+        </InfiniteScroll>
+      </Container>
+    </>
   )
 }
 
